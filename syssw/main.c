@@ -1,4 +1,3 @@
-#include<stdio.h>
 #include"syssw.h"
 
 extern int LC; // asm_tools.c 외부 정의 변수
@@ -6,9 +5,8 @@ extern int LC; // asm_tools.c 외부 정의 변수
 void main()
 {
 	char buf[50];
-	FILE *in;
 
-	in = fopen("test1.asm", "r");
+	handle_load(); // asm파일 읽기
 	Initialize(); // 레지스터 표, 명령어 표 읽기
 	printf("\nPass1:\n");
 	while (1) { // 패스1
@@ -28,4 +26,5 @@ void main()
 		PassII(buf);
 	}
 	fclose(in);
+	getchar();
 }

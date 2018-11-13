@@ -1,13 +1,38 @@
-#include<stdio.h>
-#include<string.h>
-#include<ctype.h>
-#include<math.h>
-#include<stdlib.h>
 #include"syssw.h"
 
 int MaxI, InstrP = 0;
 int MaxS = 0;
 int LC;
+
+int read_line(char str[], int limit) // 파일 제목 읽기
+{
+	int ch, i = 0;
+	while ((ch = getchar()) != '\n')
+		if (i < limit - 1)
+			str[i++] = ch;
+	str[i] = '\0';
+	return i;
+}
+
+void handle_load() // .asm파일 로드
+{
+	char buffer[BUFFER_LENGTH];
+
+	while (1) {
+		printf("Data file name ? ");
+		if (read_line(buffer, BUFFER_LENGTH) <= 0) {
+			puts("잘못된 입력입니다.");
+			continue;
+		}
+		in = fopen(buffer, "r");
+		if (in == NULL) {
+			puts("파일이 존재하지 않습니다.");
+			continue;
+		}
+		break;
+	}
+	puts("Data file loaded.");
+}
 
 void Initialize()
 {

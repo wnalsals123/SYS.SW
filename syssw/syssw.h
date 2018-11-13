@@ -1,6 +1,14 @@
 #ifndef SYSSW_H
 #define SYSSW_H
 #define MAX_INS 1
+#define BUFFER_LENGTH 200
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+#include<math.h>
+#include<stdlib.h>
+
+FILE *in;
 
 struct reg {
 	char reg_name[3];
@@ -33,6 +41,8 @@ struct sentence {
 FILE *ObjSave;
 FILE *SymbolSave;
 
+int read_line(char str[], int);
+void handle_load();
 void Initialize();
 int Analyze(char*);
 int Add_Chk(char*);
